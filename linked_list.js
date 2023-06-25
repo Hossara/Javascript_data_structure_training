@@ -1,4 +1,4 @@
-class LinkedList {
+export class LinkedList {
     constructor() {
         this.head = null
         this.tail = null
@@ -95,6 +95,23 @@ class LinkedList {
         }
     }
 
+    pop() {
+        // If list is empty
+        if (!this.head) return
+
+        const deletedItem = this.head
+
+        if (this.head.next)
+            this.head = this.head.next
+        else
+        {
+            this.head = null
+            this.tail = null
+        }
+
+        return deletedItem
+    }
+
     toArray() {
         const elements = []
 
@@ -109,6 +126,7 @@ class LinkedList {
     }
 }
 
+/*
 const linkedList = new LinkedList()
 
 linkedList.append(2)
@@ -135,3 +153,7 @@ console.log(linkedList.find("d"))
 
 linkedList.insertAfter("d", "mmd")
 console.log(linkedList.toArray())
+
+linkedList.pop()
+
+console.log(linkedList.toArray())*/
