@@ -30,6 +30,33 @@ class LinkedList {
         if (!this.tail) this.tail = newElement
     }
 
+    find(value) {
+        // If list is empty
+        if (!this.head) return
+
+        let currentElement = this.head
+
+        while (currentElement) {
+            if (currentElement.value === value)
+                return currentElement
+            else currentElement = currentElement.next
+        }
+
+        return false
+    }
+
+    insertAfter(item, value) {
+        const existingElement = this.find(item)
+
+        if (existingElement)
+        {
+            existingElement["next"] = {
+                value: value,
+                next: existingElement.next
+            }
+        }
+    }
+
     delete(value) {
         // If list is empty
         if (!this.head) return
@@ -102,4 +129,9 @@ console.log(linkedList.toArray())
 linkedList.delete(2)
 console.log(linkedList.toArray())
 linkedList.delete("n")
+console.log(linkedList.toArray())
+
+console.log(linkedList.find("d"))
+
+linkedList.insertAfter("d", "mmd")
 console.log(linkedList.toArray())
